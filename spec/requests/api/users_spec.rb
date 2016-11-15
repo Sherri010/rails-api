@@ -43,7 +43,7 @@ describe "USER API TESTS" do
  end
 
  #update
-  it "put/users/:id should return 200 for updating value" do
+  it "put/users/:id should return 204 for updating value" do
     post "/users",params:{
       user:{
         first_name: "Bar",
@@ -63,7 +63,7 @@ describe "USER API TESTS" do
   end
 
   # #destroy
-  it "DELETE /users/:id should return 200 for updating value" do
+  it "DELETE /users/:id should return 204 for updating value" do
     post "/users",params:{
       user:{
         first_name: "Bar",

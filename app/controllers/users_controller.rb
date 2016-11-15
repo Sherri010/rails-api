@@ -22,7 +22,12 @@ class UsersController < ApplicationController
   end
   #update
   def update
-     User.find(params[:id]).update(user_params)
+       user =User.find(params[:id]).update_attributes(user_params)
+     if user
+       render :json => {success:"USer updated"},status:204
+     else
+       render :json => {error:"fail to update"}, status: 400
+     end
   end
 
  def destroy
