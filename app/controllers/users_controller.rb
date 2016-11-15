@@ -16,6 +16,19 @@ class UsersController < ApplicationController
      end
   end
 
+  def edit
+    user =User.find(params[:id])
+    render :json => user,status: 200
+  end
+  #update
+  def update
+     User.find(params[:id]).update(user_params)
+  end
+
+ def destroy
+    User.find(params[:id]).delete
+ end
+
   private
   def user_params
    params.require(:user).permit(:first_name,:last_name,:email,:username)
