@@ -28,7 +28,7 @@ describe "USER API TESTS" do
     expect(response).to have_http_status(400)
   end
 
- it "GET /users/:id should return 200" do
+ it "GET /users/:id/edit should return 200" do
    post "/users",params:{
      user:{
        first_name: "Bar",
