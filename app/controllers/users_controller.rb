@@ -31,7 +31,13 @@ class UsersController < ApplicationController
   end
 
  def destroy
-    User.find(params[:id]).delete
+    user =User.find(params[:id]).destroy
+
+    if user.destroyed?
+       render :json => {success:"user deleted"}, status: 200
+     else
+       render :json => {error: "Error removing user"}, status: 400
+     end
  end
 
   private

@@ -63,7 +63,7 @@ describe "USER API TESTS" do
   end
 
   # #destroy
-  it "DELETE /users/:id should return 204 for updating value" do
+  it "DELETE /users/:id should return 200 for updating value" do
     post "/users",params:{
       user:{
         first_name: "Bar",
@@ -73,7 +73,7 @@ describe "USER API TESTS" do
       }
     }
     delete "/users/1"
-    expect(response).to have_http_status(204)
+    expect(response).to have_http_status(200)
   end
 
 end
