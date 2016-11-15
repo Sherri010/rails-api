@@ -10,7 +10,9 @@ class UsersController < ApplicationController
     if user.valid?
        render :json => user, status: 201
      else
-       head 400  #sends back a header response with 400 status code, no json data
+    #   head 400  #sends back a header response with 400 status code, no json data
+    render :json => {error: "User validation fiald"},
+    status: 400
      end
   end
 
