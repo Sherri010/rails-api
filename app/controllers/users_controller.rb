@@ -1,20 +1,38 @@
 class UsersController < ApplicationController
+
+  def login
+    user = User.find_by(email: params[:email])
+         if user
+             if user.authenticate(params[:password])
+                 render :json => user, status: 200
+             else
+                 head 401
+             end
+         else
+             render :json => {error: "User not found"}, status: 404
+         end
+  end
+
   def index
     @users= User.all
     render :json => @users, status: 200
   end
 
+
+
   def create
     user= User.create(user_params)
-
     if user.valid?
        render :json => user, status: 201
      else
     #   head 400  #sends back a header response with 400 status code, no json data
-    render :json => {error: "User validation fiald"},
+    render :json => {error: "User validation fiald",user: user},
     status: 400
      end
   end
+
+
+
 
   def edit
     user =User.find(params[:id])
@@ -42,6 +60,8 @@ class UsersController < ApplicationController
 
   private
   def user_params
-   params.require(:user).permit(:first_name,:last_name,:email,:username)
+     params.require(:user).permit(:first_name,:last_name,:email,:username,:password)
   end
+
+
 end

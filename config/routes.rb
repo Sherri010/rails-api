@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # end
 
   resources :users
+
+  post "/users/login" , to:"users#login", as: "login"
 end
