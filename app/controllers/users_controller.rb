@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_action :authenticate
 
   def login
     user = User.find_by(email: params[:email])
